@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Santoshi ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, #ff7a9e, #ff9eb8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Georgia", serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      padding: 32px 24px;
+      cursor: pointer;
+    }
+
+    .tap {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      animation: breathe 1.8s infinite;
+    }
+
+    .line {
+      font-size: 1.6rem;
+      line-height: 1.4;
+      margin: 18px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.9s ease;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .name {
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+
+    .heart {
+      font-size: 3rem;
+      margin-top: 10px;
+      animation: beat 1.2s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .floating-heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <div class="tap" id="tapText">Tap gently ❤️</div>
+
+    <div class="line name">Good morning my santu😁</div>
+    <div class="line">I love you so much🥰🫶🏻.</div>
+    <div class="line">
+      You're extremely beautiful.<br />
+      Smart.<br />
+      And strong 😁.
+    </div>
+    <div class="line">
+      In a world full of rush,<br />
+      you are my happy place.
+    </div>
+    <div class="line">
+      I choose you.<br />
+      Today.<br />
+      And every day after.
+    </div>
+    <div class="line heart">❤️</div>
+  </div>
+
+  <script>
+    const card = document.getElementById("card");
+    const lines = document.querySelectorAll(".line");
+    const tapText = document.getElementById("tapText");
+
+    let index = 0;
+
+    card.addEventListener("click", () => {
+      if (index === 0) {
+        tapText.style.display = "none";
+        setInterval(createHeart, 450);
+      }
+
+      if (index < lines.length) {
+        lines[index].classList.add("show");
+        index++;
+      }
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+  </script>
+
+</body>
+</html>
